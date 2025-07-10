@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-gray-200">
+
+    <sidebar id="navMenu"
+        class="bg-white shadow-lg w-72 p-2 h-full top-0 left-0 fixed rounded-md transform -translate-x-full transition-transform duration-300 ease-in-out xl:translate-x-0">
+        <h1 class="ml-4 mt-4 text-3xl font-bold">Welcome, Admin</h1>
+        <nav class="mt-10">
+            <ul class="space-y-3">
+                <a href="dashboard.html">
+                    <li
+                        class="flex items-center transition duration-200 bg-slate-200 text-orange-400 rounded-md h-12 pl-4 my-1 gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+                        </svg>
+                        Dashboard
+                    </li>
+                </a>
+
+                <li>
+                    <button onclick="toggleDropdown()"
+                        class="w-full flex items-center justify-between transition duration-200 hover:bg-slate-200 rounded-md h-12 pl-4 pr-4 my-1">
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5" />
+                            </svg>
+                            Tables
+                        </div>
+                        <svg id="dropdownIcon" class="w-4 h-4 transition-transform duration-200" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <ul id="tablesDropdown"
+                        class="ml-4 mt-1 space-y-1 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+
+                        <li>
+                            <a href="tabelbuku.html"
+                                class="block px-4 py-2 rounded-md hover:bg-slate-200 transition duration-200 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                                </svg>
+                                DaftarBuku</a>
+                        </li>
+                        <li>
+                            <a href="dashboard.html"
+                                class="block px-4 py-2 rounded-md hover:bg-slate-200 transition duration-200 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+
+                                Data Anggota</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </sidebar>
+
+    <header class="bg-white shadow-lg p-4 h-24 ml-0 flex justify-between items-center z-50">
+        <div class="xl:ml-80 ml-5">
+            <input
+                class="border-2 border-black focus:border-none outline-none focus:ring-4 focus:ring-orange-400 rounded-md p-4 transition duration-200 xl:w-[600px] md:w-96 sm:w-72 h-16 bg-transparent hover:bg-slate-100"
+                type="text" name="judul" placeholder="Cari">
+        </div>
+        <div class="flex gap-3 items-center">
+            <a href="#" class="cursor-pointer" onclick="userMenu()"><img src="\images\userr.jpg"
+                    class="size-12 border-4 border-black rounded-full"></a>
+                    
+            <div id="userMenu"
+                class="bg-white shadow-lg w-40 h-36 absolute top-24 right-0 rounded-md transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+                <ul class="space-y-3 p-4">
+                    <li class="p-2 hover:bg-slate-100 rounded-md flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                        Account
+                    </li>
+
+                    <li class="p-2 hover:bg-slate-100 rounded-md flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                        </svg>
+                        Log Out
+                    </li>
+                </ul>
+            </div>
+
+            <button onclick="toggleMenu()" class="xl:hidden text-3xl dark:text-black">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <section class="p-10 xl:ml-72 ml-0">
+        <div class="flex justify-start items-center mb-6">
+            <h1 class="text-4xl">Dashboard</h1>
+        </div>
+        <div class="grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-4 mb-4">
+            <div class="bg-white rounded-lg shadow-lg h-44 p-5">
+                <div class="flex flex-col justify-start pt-8 ">
+                    <h1 class="font-bold text-3xl text-slate-400">10000</h1>
+                    <h1 class="font-medium text-3xl text-orange-400 ">Jumlah Buku</h1>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg h-44 p-5">
+                <div class="flex flex-col justify-start pt-8 ">
+                    <h1 class="font-bold text-3xl text-slate-400">10000</h1>
+                    <h1 class="font-medium text-3xl text-orange-400 ">Jumlah Peminjam</h1>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg h-44 p-5">
+                <div class="flex flex-col justify-start pt-8 ">
+                    <h1 class="font-bold text-3xl text-slate-400">10000</h1>
+                    <h1 class="font-medium text-3xl text-orange-400 ">Jumlah Buku</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5 ">
+            <div class="bg-white rounded-lg shadow-lg h-[650px] p-8">
+                <h2>Statistik Buku Perpustakaan</h2>
+                <canvas id="bukuChart" class="w-full h-full"></canvas>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg h-[650px] p-5">
+                <h2 class="text-2xl font-bold mb-4 text-center">Distribusi Anggota Perpustakaan</h2>
+                <div class="relative aspect-square w-full flex items-center justify-center">
+                    <canvas id="anggotaChart" class="w-full h-full"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('tablesDropdown');
+            const icon = document.getElementById('dropdownIcon');
+
+            dropdown.classList.toggle('max-h-0');
+            dropdown.classList.toggle('max-h-40');
+            icon.classList.toggle('rotate-180');
+        }
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('-translate-x-full');
+        }
+
+        function userMenu() {
+            const user = document.getElementById('userMenu');
+            user.classList.toggle('translate-x-full');
+            user.classList.toggle('translate-x-0');
+        }
+
+        const ctx2 = document.getElementById('bukuChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Fiksi', 'Non-Fiksi', 'Sejarah', 'Komik', 'Biografi', 'Sains'],
+                datasets: [{
+                    label: 'Jumlah Buku',
+                    data: [120, 80, 40, 60, 30, 90],
+                    backgroundColor: 'orange'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false, // agar tidak dipaksa proporsional
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Jumlah Buku per Kategori'
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx = document.getElementById('anggotaChart').getContext('2d');
+        const canvas = document.getElementById('anggotaChart');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Siswa', 'Guru', 'Umum'],
+                datasets: [{
+                    data: [150, 30, 20],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Allow the chart to fill the container
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Kategori Anggota'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-200 dark:bg-gray-600 overflow-auto">
+    <header class="bg-gray-100 text-black dark:bg-gray-700 fixed w-full h-24 top-0 z-50">
+        <nav class="flex justify-between items-center w-full h-full relative">
+            <div class="ml-8">
+                <h2 class="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-extrabold bg-none dark:text-white">
+                    Perpustakaan
+                    Digital</h2>
+            </div>
+
+            <div id="navMenu"
+                class="xl:static absolute xl:min-h-fit top-24 right-0 xl:w-auto w-fit xl:w-auto px-14
+         transition-transform duration-300 transform translate-x-full xl:translate-x-0 z-10 bg-white xl:bg-transparent shadow-lg xl:shadow-none rounded-md">
+
+                <ul class="flex flex-col xl:flex-row items-center xl:justify-end space-y-6 xl:space-y-0 xl:space-x-10">
+                    <li>
+                        <a href="home.html" class=" block text-black dark:xl:text-white font-bold text-xl py-2 px-4 xl:w-full 
+         hover:bg-gray-100 xl:hover:bg-white/10 rounded-md transition">
+                            Beranda
+                        </a>
+                    </li>
+                    <li>
+                        <a href="koleksi.html" class="block text-black dark:xl:text-white font-bold text-xl py-2 px-4 xl:w-full 
+         hover:bg-gray-100 xl:hover:bg-white/10 rounded-md transition">
+                            Koleksi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block text-black dark:xl:text-white font-bold text-xl py-2 px-4 xl:w-full 
+         hover:bg-gray-100 xl:hover:bg-white/10 rounded-md transition">
+                            Kontak
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block text-black dark:xl:text-white font-bold text-xl py-2 px-4 xl:w-full 
+         hover:bg-gray-100 xl:hover:bg-white/10 rounded-md transition">
+                            Riwayat
+                        </a>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+
+            <div class="flex items-center justify-center gap-4 mr-4 p-4">
+                <button id="darkToggle" class="">
+
+                    <svg id="lightIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="size-6 text-black block dark:hidden">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                    </svg>
+
+                    <svg id="darkIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="size-6 text-white hidden dark:block">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                    </svg>
+                </button>
+
+                <button
+                    class="bg-gray-800 rounded-lg text-white w-16 h-9 sm:w-24 sm:h-12 transition duration-300 hover:bg-gray-400">
+                    SignIn
+                </button>
+
+                <button onclick="toggleMenu()" class="xl:hidden text-3xl dark:text-white">
+                    ☰
+                </button>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="container mx-auto pt-28 px-4 pb-16 min-h-screen justify-center items-center">
+        <div class="bg-white h-auto p-4 rounded-lg">
+            <div class="flex justify-center items-center mb-5">
+                <h1 class="text-4xl font-bold">Hubungi Kami</h1>
+            </div>
+            <div>
+                <label for="Nama" class="font-bold"> nama:</label>
+                <input type="text" class="w-full border-solid border-2 p-3 mb-6" placeholder="nama">
+                <label for="email" class="font-bold"> email:</label>
+                <input type="text" class="w-full border-solid border-2 p-3 mb-6" placeholder="nama">
+                <label for="pesan" class="font-bold"> Pesan:</label>
+                <input type="textarea" class="w-full border-solid-black border-2 h-32 p-3 mb-6" placeholder="nama">
+                <input type="submit" value="submit"
+                    class="bg-gray-600 rounded-md w-28 h-12 text-white font-bold cursor-pointer hover:bg-gray-500">
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 text-black dark:bg-gray-700 w-full h-auto p-5 flex justify-center items-center">
+        <div class="flex flex-col justify-center items-center">
+            <h1 class="dark:text-white font-semibold text-lg">Copyrigth@Nannn~</h1>
+
+            <div class="flex gap-7 pt-4">
+                <a class="cursor-pointer"><object data="\images\whatsapp-symbol-logo-svgrepo-com.svg"
+                        type="image/svg+xml" class="size-8"></object></a>
+                <a class="cursor-pointer"><object data="\images\instagram-svgrepo-com.svg" type="image/svg+xml"
+                        class="size-8"></object></a>
+                <a class="cursor-pointer"><object data="\images/facebook-3-logo-svgrepo-com.svg" type="image/svg+xml"
+                        class="size-8"></object></a>
+            </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('translate-x-full');
+        }
+
+        const toggle = document.getElementById('darkToggle');
+        const html = document.documentElement;
+
+        toggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+
+
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                html.classList.add('dark');
+            }
+        });
+
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</body>
+
+</html>
