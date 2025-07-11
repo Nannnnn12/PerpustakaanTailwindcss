@@ -84,7 +84,7 @@
         <div class="flex gap-3 items-center">
             <a href="#" class="cursor-pointer" onclick="userMenu()"><img src="\images\userr.jpg"
                     class="size-12 border-4 border-black rounded-full"></a>
-                    
+
             <div id="userMenu"
                 class="bg-white shadow-lg w-40 h-36 absolute top-24 right-0 rounded-md transform translate-x-full transition-transform duration-300 ease-in-out z-50">
                 <ul class="space-y-3 p-4">
@@ -119,22 +119,51 @@
             <h1 class="text-4xl">Dashboard</h1>
         </div>
         <div class="grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-4 mb-4">
-            <div class="bg-white rounded-lg shadow-lg h-44 p-5">
-                <div class="flex flex-col justify-start pt-8 ">
-                    <h1 class="font-bold text-3xl text-slate-400">10000</h1>
-                    <h1 class="font-medium text-3xl text-orange-400 ">Jumlah Buku</h1>
+            <!-- Kartu 1: Jumlah Buku -->
+            <div class="bg-white rounded-2xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition">
+                <div class="bg-orange-100 p-3 rounded-full">
+                    <!-- Icon buku -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-orange-500" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12 6v12m0-12H6a2 2 0 00-2 2v10a2 2 0 002 2h6m0-12h6a2 2 0 012 2v10a2 2 0 01-2 2h-6" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-3xl text-slate-700">10,000</h1>
+                    <p class="text-orange-500 font-medium text-lg">Jumlah Buku</p>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-lg h-44 p-5">
-                <div class="flex flex-col justify-start pt-8 ">
-                    <h1 class="font-bold text-3xl text-slate-400">10000</h1>
-                    <h1 class="font-medium text-3xl text-orange-400 ">Jumlah Peminjam</h1>
+
+            <!-- Kartu 2: Jumlah Peminjam -->
+            <div class="bg-white rounded-2xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition">
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <!-- Icon peminjam (orang + panah) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-500" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M15 12h7m0 0l-3-3m3 3l-3 3M10 4a4 4 0 110 8 4 4 0 010-8zm0 8c-3 0-6 2-6 5v3h12v-3c0-3-3-5-6-5z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-3xl text-slate-700">10,000</h1>
+                    <p class="text-blue-500 font-medium text-lg">Jumlah Peminjam</p>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-lg h-44 p-5">
-                <div class="flex flex-col justify-start pt-8 ">
-                    <h1 class="font-bold text-3xl text-slate-400">10000</h1>
-                    <h1 class="font-medium text-3xl text-orange-400 ">Jumlah Buku</h1>
+
+            <!-- Kartu 3: Jumlah Member -->
+            <div class="bg-white rounded-2xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition">
+                <div class="bg-green-100 p-3 rounded-full">
+                    <!-- Icon user/member -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-500" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M5.121 17.804A7.975 7.975 0 0112 15c2.21 0 4.21.896 5.657 2.343M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-3xl text-slate-700">10,000</h1>
+                    <p class="text-green-500 font-medium text-lg">Jumlah Member</p>
                 </div>
             </div>
         </div>
@@ -144,12 +173,15 @@
                 <h2>Statistik Buku Perpustakaan</h2>
                 <canvas id="bukuChart" class="w-full h-full"></canvas>
             </div>
-            <div class="bg-white rounded-lg shadow-lg h-[650px] p-5">
-                <h2 class="text-2xl font-bold mb-4 text-center">Distribusi Anggota Perpustakaan</h2>
-                <div class="relative aspect-square w-full flex items-center justify-center">
+            <div class="bg-white rounded-lg shadow-lg px-4 py-6 flex flex-col items-center">
+                <h2 class="text-2xl font-bold mb-4 text-center">Statistik Member Perpustakaan</h2>
+
+                <div class="w-full max-w-md aspect-square">
                     <canvas id="anggotaChart" class="w-full h-full"></canvas>
                 </div>
             </div>
+        </div>
+
         </div>
     </section>
 
@@ -205,32 +237,35 @@
         });
 
         const ctx = document.getElementById('anggotaChart').getContext('2d');
-        const canvas = document.getElementById('anggotaChart');
-        new Chart(ctx, {
-            type: 'pie',
+        const memberChart = new Chart(ctx, {
+            type: 'doughnut',
             data: {
-                labels: ['Siswa', 'Guru', 'Umum'],
+                labels: ['Aktif', 'Tidak Aktif', 'Kadaluarsa'],
                 datasets: [{
-                    data: [150, 30, 20],
+                    label: 'Jumlah Member',
+                    data: [120, 30, 10],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)'
+                        'rgba(34, 197, 94, 0.7)',     // Hijau - Aktif
+                        'rgba(251, 191, 36, 0.7)',    // Kuning - Tidak Aktif
+                        'rgba(239, 68, 68, 0.7)'      // Merah - Kadaluarsa
                     ],
-                    borderColor: '#fff',
-                    borderWidth: 2
+                    borderColor: [
+                        'rgba(34, 197, 94, 1)',
+                        'rgba(251, 191, 36, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false, // Allow the chart to fill the container
                 plugins: {
                     legend: {
                         position: 'bottom'
                     },
                     title: {
                         display: true,
-                        text: 'Kategori Anggota'
+                        text: 'Distribusi Member Perpustakaan'
                     }
                 }
             }
